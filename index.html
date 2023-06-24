@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website Title</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .left-panel {
+      background: #333;
+      color: #fff;
+      width: 20%;
+      padding: 20px;
+    }
+    .left-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .left-panel li {
+      margin-bottom: 10px;
+    }
+    .left-panel a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .left-panel a:hover {
+      background-color: #555;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      color: #333;
+      display: none;
+      text-align: center;
+    }
+    .content.show {
+      display: block;
+    }
+    .content h2 {
+      margin-top: 0;
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+  <script>
+    // JavaScript code
+    document.addEventListener("DOMContentLoaded", function() {
+      var links = document.querySelectorAll(".left-panel a");
+      var contents = document.querySelectorAll(".content");
+
+      links.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+          event.preventDefault();
+          var target = this.getAttribute("href").substr(1);
+          contents.forEach(function(content) {
+            content.classList.remove("show");
+          });
+          document.getElementById(target).classList.add("show");
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#information">Information</a></li>
+        <li><a href="#guide">Guide</a></li>
+      </ul>
+    </div>
+    <div class="content" id="home">
+      <h2>Welcome to the Home Page</h2>
+      <img src="data:image/jpeg;base64,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" alt="Home Image">
+      <p>This is the content of the Home page.</p>
+    </div>
+    <div class="content" id="contact">
+      <h2>Contact Information</h2>
+      <p>This is the contact information.</p>
+    </div>
+    <div class="content" id="information">
+      <h2>Information</h2>
+      <p>This is some information.</p>
+    </div>
+    <div class="content" id="guide">
+      <h2>Guide</h2>
+      <p>This is the guide section.</p>
+    </div>
+  </div>
+</body>
+</html>
